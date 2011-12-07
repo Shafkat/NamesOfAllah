@@ -34,12 +34,15 @@ var englishNames = ["The All Compassionate", "The All Merciful", "The Absolute R
 //Begining of Functions
 
 //Function that populates the list of possible answers.
-function addOptions(opt)
+function addOptions(tag, opt)
 {
 	var optionsList = document.getElementById('options');
 	var eachOption = document.createElement('button');
+	var eachOptionTag = document.createElement('p');
 	eachOption.innerHTML = opt;
-	optionsList.appendChild(eachOption);
+	eachOptionTag.innerHTML = tag;
+	eachOptionTag.appendChild(eachOption);
+	optionsList.appendChild(eachOptionTag);
 	
 	$(eachOption).click( function() {
 				alert("Logic not implemented yet!");
