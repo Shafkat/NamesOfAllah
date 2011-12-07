@@ -29,10 +29,14 @@ var englishNames = ["The All Compassionate", "The All Merciful", "The Absolute R
 "The Preventer of Harm","The Creator of The Harmful","The Creator of Good","The Light","The Guide","The Originator","The Everlasting One",
 "The Inheritor of All","The Righteous Teacher","The Patient One"];
 
+//End of Variables
+
+//Begining of Functions
+
 //Function that populates the list of possible answers.
 function addOptions(opt)
 {
-	var optionsList = document.GetElementById('options');
+	var optionsList = document.getElementById('options');
 	var eachOption = document.CreateElement('button');
 	eachOption.innerHTML = opt;
 	optionsList.appendChild(eachOption);
