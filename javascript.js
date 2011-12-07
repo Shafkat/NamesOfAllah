@@ -37,7 +37,7 @@ var englishNames = ["The All Compassionate", "The All Merciful", "The Absolute R
 function addOptions(opt)
 {
 	var optionsList = document.getElementById('options');
-	var eachOption = document.CreateElement('button');
+	var eachOption = document.createElement('button');
 	eachOption.innerHTML = opt;
 	optionsList.appendChild(eachOption);
 	
