@@ -1,3 +1,5 @@
+//Begining of Variables//
+
 var arabicNames = ["Ar Rahman", "Ar Rahim", "Al Malik", "Al Quddus", "As Salaam", "Al Mu'min", 
 "Al Muhaymin", "Al Aziz", "Al Jabbar", "Al Mutakabbir", "Al Khaliq", "Al Bari'", "Al Musawwir", 
 "Al Ghaffar", "Al Qahhar", "Al Wahhab", "Ar Razzaq", "Al Fattah", "Al 'Alim", "Al Qabid", 
@@ -29,9 +31,39 @@ var englishNames = ["The All Compassionate", "The All Merciful", "The Absolute R
 "The Preventer of Harm","The Creator of The Harmful","The Creator of Good","The Light","The Guide","The Originator","The Everlasting One",
 "The Inheritor of All","The Righteous Teacher","The Patient One"];
 
-//End of Variables
+var random1, ans1, ans2, ans3, ans4, random2, random3, random4;
+var currentLang = new Array();
+currentLang = arabicNames;
+//End of Variables//
 
-//Begining of Functions
+//Begining of Functions//
+
+//Function that generates the random number to pick the question and appends it to the page.
+function run()
+{
+	random1 = Math.floor(Math.random()*99);
+	var questionDiv = document.getElementById('name');
+	var question = document.createElement('p');
+	question.innerHTML = currentLang[random1];
+	questionDiv.appendChild(question);
+	
+	generateRandomNum();
+}
+
+function generateRandomNum()
+{
+	do{
+		random2 = Math.floor(Math.random()*99);
+	}while( random2 == random1 );
+	
+	do{
+		random3 = Math.floor(Math.random()*99);
+	}while( (random3 == random1) || (random3 == random2) );
+	
+	do{
+		random4 = Math.floor(Math.random()*99);
+	}while( (random4 == random1) || (random4 == random2) || (random4 == random3) );
+}
 
 //Function that populates the list of possible answers.
 function addOptions(tag, opt)
@@ -49,4 +81,4 @@ function addOptions(tag, opt)
 	});
 }
 
-//var x = Math.floor(Math.random()*11);
+//End of Functions//
