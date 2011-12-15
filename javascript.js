@@ -32,8 +32,14 @@ var englishNames = ["The All Compassionate", "The All Merciful", "The Absolute R
 "The Inheritor of All","The Righteous Teacher","The Patient One"];
 
 var random1, ans1, ans2, ans3, ans4, random2, random3, random4;
-var currentLang = new Array();
-currentLang = arabicNames;
+
+var questionLang = new Array();
+questionLang = arabicNames;
+
+var answerLang = new Array();
+answerLang = englishNames;
+
+var finalArray = new Array();
 //End of Variables//
 
 //Begining of Functions//
@@ -44,12 +50,13 @@ function run()
 	random1 = Math.floor(Math.random()*99);
 	var questionDiv = document.getElementById('name');
 	var question = document.createElement('p');
-	question.innerHTML = currentLang[random1];
+	question.innerHTML = questionLang[random1];
 	questionDiv.appendChild(question);
 	
 	generateRandomNum();
 }
 
+//Funtion that randomly picks other possible answers
 function generateRandomNum()
 {
 	do{
@@ -63,18 +70,59 @@ function generateRandomNum()
 	do{
 		random4 = Math.floor(Math.random()*99);
 	}while( (random4 == random1) || (random4 == random2) || (random4 == random3) );
+	
+	generateOrder();
+	
+	for(var i = 0; i < finalArray.length; i++)
+	{
+		addOptions(finalArray[i]);
+	}
+}
+
+//Function that randomizes the answers and assigns them to the array that contains them
+function generateOrder()
+{
+	ans1 = Math.floor(Math.random()*8);
+	
+	//Assigning answers
+	if((ans1 == 0) || (ans1 == 4))
+	{
+		finalArray[0] = answerLang[random1];
+		finalArray[1] = answerLang[random2];
+		finalArray[2] = answerLang[random3];
+		finalArray[3] = answerLang[random4];
+	}
+	else if((ans1 == 1) || (ans1 == 5))
+	{
+		finalArray[0] = answerLang[random2];
+		finalArray[1] = answerLang[random1];
+		finalArray[2] = answerLang[random3];
+		finalArray[3] = answerLang[random4];
+	}
+	else if((ans1 == 2) || (ans1 == 6))
+	{
+		finalArray[0] = answerLang[random2];
+		finalArray[1] = answerLang[random3];
+		finalArray[2] = answerLang[random1];
+		finalArray[3] = answerLang[random4];
+	}
+	else ((ans1 == 3) || (ans1 == 7))
+	{
+		finalArray[0] = answerLang[random2];
+		finalArray[1] = answerLang[random3];
+		finalArray[2] = answerLang[random4];
+		finalArray[3] = answerLang[random1];
+	}
 }
 
 //Function that populates the list of possible answers.
-function addOptions(tag, opt)
+function addOptions(opt)
 {
 	var optionsList = document.getElementById('options');
 	var eachOption = document.createElement('button');
-	var eachOptionTag = document.createElement('p');
 	eachOption.innerHTML = opt;
-	eachOptionTag.innerHTML = tag;
-	eachOptionTag.appendChild(eachOption);
-	optionsList.appendChild(eachOptionTag);
+	optionsList.appendChild(eachOption);
+
 	
 	$(eachOption).click( function() {
 				alert("Logic not implemented yet!");
