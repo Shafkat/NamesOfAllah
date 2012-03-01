@@ -50,6 +50,7 @@ function run()
 	random1 = Math.floor(Math.random()*99);
 	var questionDiv = document.getElementById('name');
 	var question = document.createElement('p');
+	
 	question.innerHTML = questionLang[random1];
 	questionDiv.appendChild(question);
 	
@@ -120,13 +121,26 @@ function addOptions(opt)
 {
 	var optionsList = document.getElementById('options');
 	var eachOption = document.createElement('button');
+
 	eachOption.innerHTML = opt;
 	optionsList.appendChild(eachOption);
-
 	
 	$(eachOption).click( function() {
-				alert("Logic not implemented yet!");
+				checkAnswer(this);
 	});
+}
+
+//Function that checks the answer
+function checkAnswer(ans)
+{
+	if(ans.innerHTML == answerLang[random1])
+	{
+		alert('Correct Answer MashaAllah!');
+	}
+	else
+	{
+		alert('Wrong Answer!');
+	}
 }
 
 //End of Functions//
