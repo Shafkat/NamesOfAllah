@@ -42,8 +42,8 @@ answerLang = englishNames;
 var finalArray = new Array();
 //End of Variables//
 
-//Begining of Functions//
 
+//Begining of Functions//
 //Function that generates the random number to pick the question and appends it to the page.
 function run()
 {
@@ -123,6 +123,7 @@ function addOptions(opt)
 	var eachOption = document.createElement('button');
 
 	eachOption.innerHTML = opt;
+	eachOption.setAttribute("class","button");
 	optionsList.appendChild(eachOption);
 	
 	$(eachOption).click( function() {
