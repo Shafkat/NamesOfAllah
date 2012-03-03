@@ -12,6 +12,13 @@ h2
 	filter: dropshadow(color=#ffffff, offx=, offy=1);
 }
 
+h4
+{
+	font-size: 1em;
+	text-shadow: 1.25px 1.25px 1.25px darkgrey;
+	filter: dropshadow(color=#ffffff, offx=, offy=1);
+}
+
 body
 {
 	font-family: 'Princess Sofia', cursive;

@@ -40,6 +40,8 @@ var answerLang = new Array();
 answerLang = englishNames;
 
 var finalArray = new Array();
+
+var hasana = 0;
 //End of Variables//
 
 
@@ -49,7 +51,7 @@ function run()
 {
 	random1 = Math.floor(Math.random()*99);
 	var questionDiv = document.getElementById('name');
-	var question = document.createElement('p');
+	var question = document.createElement('h4');
 	
 	question.innerHTML = questionLang[random1];
 	questionDiv.appendChild(question);
@@ -93,21 +95,21 @@ function generateOrder()
 		finalArray[2] = answerLang[random3];
 		finalArray[3] = answerLang[random4];
 	}
-	else if((ans1 == 1) || (ans1 == 5))
+	if((ans1 == 1) || (ans1 == 5))
 	{
 		finalArray[0] = answerLang[random2];
 		finalArray[1] = answerLang[random1];
 		finalArray[2] = answerLang[random3];
 		finalArray[3] = answerLang[random4];
 	}
-	else if((ans1 == 2) || (ans1 == 6))
+	if((ans1 == 2) || (ans1 == 6))
 	{
 		finalArray[0] = answerLang[random2];
 		finalArray[1] = answerLang[random3];
 		finalArray[2] = answerLang[random1];
 		finalArray[3] = answerLang[random4];
 	}
-	else ((ans1 == 3) || (ans1 == 7))
+	if((ans1 == 3) || (ans1 == 7))
 	{
 		finalArray[0] = answerLang[random2];
 		finalArray[1] = answerLang[random3];
@@ -137,11 +139,50 @@ function checkAnswer(ans)
 	if(ans.innerHTML == answerLang[random1])
 	{
 		alert('Correct Answer MashaAllah!');
+		calculateHasana(true);
+		removePrevious();
+		run();
 	}
 	else
 	{
 		alert('Wrong Answer!');
+		calculateHasana(false);
+		removePrevious();
+		run();
 	}
+}
+
+//Function that removes the current questions and answer options
+function removePrevious()
+{
+	$('#name').empty();
+	$('#options').empty();
+}
+
+//Function that handles the score
+function calculateHasana(bool)
+{
+	if(bool)
+	{
+		hasana++;
+		
+		$('#score').empty();
+		
+		var score = document.getElementById('score');
+		
+		score.innerHTML = 'Your Hasana: ' + hasana;
+	}
+	else
+	{
+		hasana--;
+		
+		$('#score').empty();
+		
+		var score = document.getElementById('score');
+		
+		score.innerHTML = 'Your Hasana: ' + hasana;
+	}
+	
 }
 
 //End of Functions//
