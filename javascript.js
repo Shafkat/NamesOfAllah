@@ -145,7 +145,7 @@ function checkAnswer(ans)
 	}
 	else
 	{
-		alert('Wrong Answer!');
+		alert('Wrong Answer! Correct Answer is "' + answerLang[random1] + '"');
 		calculateHasana(false);
 		removePrevious();
 		run();
